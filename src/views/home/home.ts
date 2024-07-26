@@ -1,7 +1,9 @@
-import { validHeader } from '../../helpers/format-validator';
+import { NavigateTo } from '../../Router';
+import { isValidDataArray } from '../../helpers/format-validator';
 import { transformCsvData } from '../../helpers/transform-csv';
 import { city } from '../../models/interfaces';
-import './home.css'
+import './home.css';
+import * as CryptoJS from 'crypto-js';
 
 export function Home(){
     //render view first time
@@ -26,32 +28,27 @@ export function Home(){
     $fileForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
         const file: File = $file.files![0];
+        const fileContent:string=await file.text();
+        const dataArray:city[]=await transformCsvData(fileContent);
+
+        //guards
 
         if (!file) {
             alert("No ha seleccionado un archivo aún.");
             return;
         }
 
-        if(!$file.value.includes(".csv")){
-            alert("El archivo seleccionado no es .csv");
+        if(!$file.value.endsWith(".csv")){
+            alert("El archivo seleccionado no es de tipo .csv");
             return;
         }
 
-        const cities:city[]=await transformCsvData(file);
-
-        if(!validHeader(cities[0])){
-            alert("El archivo no tiene los títulos correctos.");
+        if(!isValidDataArray(dataArray)){
+            alert("El archivo .csv no cumple con la estructura necesaria.");
             return;
         }
 
-        cities.forEach(function (city, index) {
-            if (city.length !== 5) {
-                cities.splice(index, 1);
-            }
-        });
-
-        
-        console.log(cities[0]);
-        
+        sessionStorage.setItem("fileContent",CryptoJS.AES.encrypt(fileContent, 'key-here').toString()); //save file content in sessionStorage
+        NavigateTo('/') //table view
     });
 }
