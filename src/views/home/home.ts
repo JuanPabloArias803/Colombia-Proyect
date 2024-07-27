@@ -49,6 +49,6 @@ export function Home(){
         }
 
         sessionStorage.setItem("fileContent",CryptoJS.AES.encrypt(fileContent, 'key-here').toString()); //save file content in sessionStorage
-        NavigateTo('/') //table view
+        NavigateTo('/home/data') //table view
     });
 }

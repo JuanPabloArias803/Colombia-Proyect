@@ -9,12 +9,14 @@ function isValidHeader(headerRow:string[]){
 }
 
 export function isValidDataArray(dataArray:city[]):boolean{
-
+    
+    let validFlag:boolean=true;
     dataArray.forEach(row => {
-        if (row.length !== 5) {
-            return false            
+        if (row.length !== 5||row.includes("")) {
+            console.log(row);
+            
+            validFlag=false;
         }
     });
-
-    return(isValidHeader(dataArray[0])); 
+    return(isValidHeader(dataArray[0])&&validFlag); 
 }
