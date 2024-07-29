@@ -1,3 +1,4 @@
+import { ColombiaMap } from '../../components/map';
 import { isValidHeader } from '../../helpers/format-validator';
 import { renderTable } from '../../helpers/renderTable';
 import { transformCsvData } from '../../helpers/transform-csv';
@@ -31,17 +32,19 @@ export async function DataView() {
   $root.innerHTML = `
     <div class="data-view-container">
         <h1>Información DANE municipios de Colombia</h1>
+        <div id="map-container"></div>
+        <input type="text" class="search-input" placeholder="Buscar">
         <div class="table-container"></div>
         <span>
             <button class="previus-btn">Anterior</button>
             <button class="next-btn">Siguiente</button>  
         </span>
         <a class="download-link" style="display:none">Descargar archivo plano</a>
-        <input type="text" class="search-input">
     </div>
    `;
 
   //view logic
+  ColombiaMap();
   const $previus = document.querySelector('.previus-btn') as HTMLButtonElement;
   const $next = document.querySelector('.next-btn') as HTMLButtonElement;
   const $download = document.querySelector(

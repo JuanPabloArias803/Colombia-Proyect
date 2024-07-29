@@ -1,0 +1,38 @@
+import { city } from '../models/interfaces';
+
+export function citiesPerState(dataArray:city[]){
+    return {antioquia:dataArray.filter(row=>row[2]==="Antioquia").length,
+            cundinamarca:dataArray.filter(row=>row[2]==="Cundinamarca").length,
+            boyaca:dataArray.filter(row=>row[2]==="Boyacá").length,
+            cordoba:dataArray.filter(row=>row[2]==="Córdoba").length,
+            choco:dataArray.filter(row=>row[2]==="Chocó").length,
+            nariño:dataArray.filter(row=>row[2]==="Nariño").length,
+            santander:dataArray.filter(row=>row[2]==="Santander").length,
+            meta:dataArray.filter(row=>row[2]==="Meta").length,
+            atlantico:dataArray.filter(row=>row[2]==="Atlántico").length,
+            bolivar:dataArray.filter(row=>row[2]==="Bolívar").length,
+            caldas:dataArray.filter(row=>row[2]==="Caldas").length,
+            caqueta:dataArray.filter(row=>row[2]==="Caquetá").length,
+            cauca:dataArray.filter(row=>row[2]==="Cauca").length,
+            cesar:dataArray.filter(row=>row[2]==="Cesar").length,
+            huila:dataArray.filter(row=>row[2]==="Huila").length,
+            guajira:dataArray.filter(row=>row[2]==="La Guajira").length,
+            magdalena:dataArray.filter(row=>row[2]==="Magdalena").length,
+            quindio:dataArray.filter(row=>row[2]==="Quindío").length,
+            risaralda:dataArray.filter(row=>row[2]==="Risaralda").length,
+            sucre:dataArray.filter(row=>row[2]==="Sucre").length,
+            tolima:dataArray.filter(row=>row[2]==="Tolima").length,
+            arauca:dataArray.filter(row=>row[2]==="Arauca").length,
+            casanare:dataArray.filter(row=>row[2]==="Casanare").length,
+            putumayo:dataArray.filter(row=>row[2]==="Putumayo").length,
+            amazonas:dataArray.filter(row=>row[2]==="Amazonas").length,
+            guainia:dataArray.filter(row=>row[2]==="Guainía").length,
+            vaupes:dataArray.filter(row=>row[2]==="Vaupés").length,
+            vichada:dataArray.filter(row=>row[2]==="Vichada").length,
+            guaviare:dataArray.filter(row=>row[2]==="Guaviare").length,
+            islas:dataArray.filter(row=>row[2]==="Archipiélago de San Andrés, Providencia y Santa Catalina").length,
+            capital:dataArray.filter(row=>row[2]==="Bogotá D.C.").length,
+            nortesantander:dataArray.filter(row=>row[2]==="Norte de Santander").length,
+            vallecauca:dataArray.filter(row=>row[2]==="Valle del Cauca").length
+    }
+}
