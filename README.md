@@ -6,7 +6,7 @@
 
 - Link del vídeo demo de la aplicación funcional: https://youtu.be/uObPnlW9Xvg
 
-##Pasos para la descarga y ejecución de este proyecto:
+## Pasos para la descarga y ejecución de este proyecto:
 - Clonar el repositorio.
 - Instalar las dependencias necesarias con el comando npm install.
 - Usar el comando de Vite que inicia el servidor de desarrollo npm run dev.
