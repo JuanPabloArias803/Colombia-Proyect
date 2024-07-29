@@ -1,14 +1,17 @@
-import { city } from "../models/interfaces";
+import { city } from '../models/interfaces';
 
-export function renderTable(dataArray:city[],currentPage:number,rowsPerPage:number){
-    
-    const startIndex = (currentPage - 1) * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
-    const copy=dataArray.slice(startIndex,endIndex);
-    
-    let tableRows:string='';
-    copy.forEach(row => {
-        tableRows+=`
+export function renderTable(
+  dataArray: city[],
+  currentPage: number,
+  rowsPerPage: number
+) {
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+  const copy = dataArray.slice(startIndex, endIndex);
+
+  let tableRows: string = '';
+  copy.forEach((row) => {
+    tableRows += `
           <tr>
               <td>${row[0]}</td>
               <td>${row[1]}</td>
@@ -17,9 +20,11 @@ export function renderTable(dataArray:city[],currentPage:number,rowsPerPage:numb
               <td>${row[4]}</td>
           </tr>
           `;
-     });
-    const $tableContainer=document.querySelector(".table-container") as HTMLDivElement;
-    $tableContainer.innerHTML=`
+  });
+  const $tableContainer = document.querySelector(
+    '.table-container'
+  ) as HTMLDivElement;
+  $tableContainer.innerHTML = `
             <table>
                 <tr>
                     <th>REGION</th>
@@ -31,5 +36,5 @@ export function renderTable(dataArray:city[],currentPage:number,rowsPerPage:numb
                 ${tableRows}
             </table>
     `;
-    return;
+  return;
 }

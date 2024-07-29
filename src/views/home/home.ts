@@ -1,16 +1,16 @@
 import { NavigateTo } from '../../Router';
-import {  isValidHeader } from '../../helpers/format-validator';
+import { isValidHeader } from '../../helpers/format-validator';
 import { transformCsvData } from '../../helpers/transform-csv';
 import { city } from '../../models/interfaces';
 import './home.css';
 import * as CryptoJS from 'crypto-js';
 
-export function Home(){
-    //render view
-    
-    const $root=document.getElementById('app') as HTMLDivElement;
+export function Home() {
+  //render view
 
-    $root.innerHTML=`
+  const $root = document.getElementById('app') as HTMLDivElement;
+
+  $root.innerHTML = `
         <div class="home-container">
             <h1>Carga de archivo plano</h1>
             <form id='file-form'>
@@ -20,35 +20,38 @@ export function Home(){
         </div>
     `;
 
-    //view logic
+  //view logic
 
-    const $fileForm=document.getElementById('file-form') as HTMLFormElement;
-    const $file=document.getElementById('file') as HTMLInputElement;
-    
-    $fileForm.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const file: File = $file.files![0];
-        const fileContent:string=await file.text();
-        const dataArray:city[]=await transformCsvData(fileContent);
+  const $fileForm = document.getElementById('file-form') as HTMLFormElement;
+  const $file = document.getElementById('file') as HTMLInputElement;
 
-        //guards
+  $fileForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const file: File = $file.files![0];
+    const fileContent: string = await file.text();
+    const dataArray: city[] = await transformCsvData(fileContent);
 
-        if (!file) {
-            alert("No ha seleccionado un archivo aún.");
-            return;
-        }
+    //guards
 
-        if(!$file.value.endsWith(".csv")){
-            alert("El archivo seleccionado no es de tipo .csv");
-            return;
-        }
+    if (!file) {
+      alert('No ha seleccionado un archivo aún.');
+      return;
+    }
 
-        if(!isValidHeader(dataArray)){
-            alert("El archivo .csv no cumple con la estructura necesaria.");
-            return;
-        }
+    if (!$file.value.endsWith('.csv')) {
+      alert('El archivo seleccionado no es de tipo .csv');
+      return;
+    }
 
-        sessionStorage.setItem("fileContent",CryptoJS.AES.encrypt(fileContent, 'key-here').toString()); //save file content in sessionStorage
-        NavigateTo('/home/data');
-    });
+    if (!isValidHeader(dataArray)) {
+      alert('El archivo .csv no cumple con la estructura necesaria.');
+      return;
+    }
+
+    sessionStorage.setItem(
+      'fileContent',
+      CryptoJS.AES.encrypt(fileContent, 'key-here').toString()
+    ); //save file content in sessionStorage
+    NavigateTo('/home/data');
+  });
 }
