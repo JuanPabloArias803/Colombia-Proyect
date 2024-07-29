@@ -1,22 +1,18 @@
 import { city } from "../models/interfaces";
 
-function isValidHeader(headerRow:string[]){
+export function isValidHeader(dataArray:city[]){
 
     const tableHeader=["REGION","CÓDIGO DANE DEL DEPARTAMENTO","DEPARTAMENTO","CÓDIGO DANE DEL MUNICIPIO","MUNICIPIO"];
-    const validFlag=headerRow.every(column=>tableHeader.includes(column));
+    const validFlag=dataArray[0].every(column=>tableHeader.includes(column));
 
     return validFlag;
 }
 
-export function isValidDataArray(dataArray:city[]):boolean{
-    
-    let validFlag:boolean=true;
-    dataArray.forEach(row => {
-        if (row.length !== 5||row.includes("")) {
-            console.log(row);
-            
-            validFlag=false;
+export function clearDataArray(dataArray:city[]):void{
+
+    for (let i = 0; i < dataArray.length; i++) {
+        if (dataArray[i].length !== 5||dataArray[i].includes("")) {
+            dataArray.splice(i,1);
         }
-    });
-    return(isValidHeader(dataArray[0])&&validFlag); 
+    }
 }

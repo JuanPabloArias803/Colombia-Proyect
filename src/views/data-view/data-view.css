@@ -1,0 +1,35 @@
+.data-view-container{
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+table,td,th{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,td{
+    padding: 5px;
+}
+
+th{
+    font-size: 0.5rem;
+    background-color: #b8e4ff;
+}
+
+td{
+    font-size: 0.8rem;
+}
+
+.data-view-container button{
+    width: 70px;
+    background-color: #b8e4ff;
+    border: solid 1px black;
+    padding: 4px 6px;
+    border-radius: 10px;
+}

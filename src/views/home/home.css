@@ -1,7 +1,25 @@
 .home-container{
     display: flex;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+.home-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container input::file-selector-button,
+.home-container button{
+    width: fit-content;
+    background-color: #b8e4ff;
+    border: solid 1px black;
+    padding: 4px 6px;
+    border-radius: 10px;
 }

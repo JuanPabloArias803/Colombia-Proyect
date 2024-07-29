@@ -2,11 +2,10 @@ import { city } from "../models/interfaces";
 
 export function renderTable(dataArray:city[],currentPage:number,rowsPerPage:number){
     
-    const header=dataArray[0];
     const startIndex = (currentPage - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
-    
     const copy=dataArray.slice(startIndex,endIndex);
+    
     let tableRows:string='';
     copy.forEach(row => {
         tableRows+=`
@@ -23,11 +22,11 @@ export function renderTable(dataArray:city[],currentPage:number,rowsPerPage:numb
     $tableContainer.innerHTML=`
             <table>
                 <tr>
-                    <th>${header[0]}</th>
-                    <th>${header[1]}</th>
-                    <th>${header[2]}</th>
-                    <th>${header[3]}</th>
-                    <th>${header[4]}</th>
+                    <th>REGION</th>
+                    <th>CÓDIGO DANE DEL DEPARTAMENTO</th>
+                    <th>DEPARTAMENTO</th>
+                    <th>CÓDIGO DANE DEL MUNICIPIO</th>
+                    <th>MUNICIPIO</th>
                 </tr>
                 ${tableRows}
             </table>
